@@ -54,7 +54,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//var utils = require('./utils.js');
 	_utils2.default.log('Hello World');
 
 /***/ },
@@ -8141,11 +8140,10 @@
 	"use strict";
 
 	var utils = {
-		log: function log(message) {
-			console.log(message);
-		}
+	    log: function log(message) {
+	        console.log(message);
+	    }
 	};
-
 	module.exports = utils;
 
 /***/ }
