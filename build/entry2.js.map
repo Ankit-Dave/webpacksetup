@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./entry2.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAEA,uBAAW,gBAAX,E","file":"entry2.js","sourcesContent":["import writeOnDOM from './modules/util/common';\r\n\r\nwriteOnDOM('Hi from entry2');\r\n\n\n\n/** WEBPACK FOOTER **\n ** ./entry2.js\n **/"],"sourceRoot":""}
