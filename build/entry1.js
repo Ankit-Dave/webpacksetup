@@ -24,7 +24,7 @@ webpackJsonp([1],[
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	(0, _common2.default)('Hi from entry1');
+	(0, _common2.default)('</br>Hi from entry one</br>');
 
 /***/ }
 ]);

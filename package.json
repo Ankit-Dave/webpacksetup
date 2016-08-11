@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "SET NODE_ENV=development&& webpack -d --color --watch",
+    "start": "SET NODE_ENV=development&& webpack-dev-server --content-base build/ --inline --hot",
     "build": "SET NODE_ENV=development&& webpack -d --color",
     "buildProduction": "SET NODE_ENV=production&& webpack -p --color",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +19,8 @@
     "eslint": "^3.0.0",
     "eslint-loader": "^1.4.0",
     "html-webpack-plugin": "^2.22.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "babel-polyfill": "^6.9.1"
