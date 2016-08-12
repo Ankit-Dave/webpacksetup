@@ -8,9 +8,13 @@ var config = {
       "src": "./",
       "dest": "js",
       "entries": {
-        "common": ["./modules/util/common.js"],
-        "entry1": ["./entry1.js"],
-        "entry2": ["./entry2.js"]
+        "common": ["babel-polyfill", "./modules/util/common.js"],
+        "entry1": ["babel-polyfill", "./entry1.js"],
+        "entry2": ["babel-polyfill", "./entry2.js"]
+      },
+      "babel": {
+        "presets": ["es2015", "stage-2"],
+        "plugins": []
       }
     }
   }
@@ -19,23 +23,23 @@ var config = {
 function packageSort(packages) {
   var i = 0;
   return function sort(a, b) {
-    if(packages[i] === a.names[0]) {
+    if (packages[i] === a.names[0]) {
       return -1;
     }
-    if(packages[i] === b.names[0]) {
+    if (packages[i] === b.names[0]) {
       return 1;
     }
     i++;
     return 0;
   }
-}        
+}
 
 var path = require('path');
 var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-function makeWebpackConfig (env) {
+function makeWebpackConfig(env) {
   var context = path.resolve(config.root.src);
   var jsSrc = path.resolve(config.root.src, config.tasks.js.src);
   var jsDest = path.resolve(config.root.dest, config.tasks.js.dest);
@@ -51,28 +55,29 @@ function makeWebpackConfig (env) {
       filename: filenamePattern,
     },
     module: {
-        preLoaders: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: "eslint-loader"
-        }],
-        loaders: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-        }]
+      preLoaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      }],
+      loaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: config.tasks.js.babel
+      }]
     },
     plugins: [
       new CleanWebpackPlugin([config.root.dest]),
 
       new webpack.DefinePlugin({
-          'process.env': {
-              NODE_ENV: JSON.stringify("production")
-          }
+        'process.env': {
+          NODE_ENV: JSON.stringify("production")
+        }
       }),
 
       new webpack.optimize.CommonsChunkPlugin({
-          name: ['common']
+        name: ['common']
       }),
 
       new HtmlWebpackPlugin({
@@ -87,7 +92,7 @@ function makeWebpackConfig (env) {
     ]
   };
 
-  if(env === 'development') {
+  if (env === 'development') {
     webpackConfig.devtool = 'inline-source-map';
   }
 
