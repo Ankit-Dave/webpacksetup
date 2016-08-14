@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "SET NODE_ENV=development&& webpack-dev-server --content-base build/ --inline --hot",
-    "build": "SET NODE_ENV=development&& webpack -d --color",
-    "buildProduction": "SET NODE_ENV=production&& webpack -p --color",
+    "server": "SET NODE_ENV=development&& webpack-dev-server --content-base build/ --inline --hot",
+    "build-dev": "SET NODE_ENV=development&& webpack -d --color",
+    "build-prod": "SET NODE_ENV=production&& webpack -p --color",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ankit Dave (ankitdave87@gmail.com)",

@@ -1,51 +1,18 @@
-var config = {
-  "root": {
-    "src": "./src",
-    "dest": "./build"
-  },
-  "tasks": {
-    "js": {
-      "src": "./",
-      "dest": "js",
-      "entries": {
-        "common": ["babel-polyfill", "./modules/util/common.js"],
-        "entry1": ["babel-polyfill", "./entry1.js"],
-        "entry2": ["babel-polyfill", "./entry2.js"]
-      },
-      "babel": {
-        "presets": ["es2015", "stage-2"],
-        "plugins": []
-      }
-    }
-  }
-};
-
-function packageSort(packages) {
-  var i = 0;
-  return function sort(a, b) {
-    if (packages[i] === a.names[0]) {
-      return -1;
-    }
-    if (packages[i] === b.names[0]) {
-      return 1;
-    }
-    i++;
-    return 0;
-  }
-}
-
 var path = require('path');
 var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var config = require('./config');
+var packageSort = require('./lib/packageSort');
 
+console.log(process.env.NODE_ENV);
 function makeWebpackConfig(env) {
   var context = path.resolve(config.root.src);
   var jsSrc = path.resolve(config.root.src, config.tasks.js.src);
   var jsDest = path.resolve(config.root.dest, config.tasks.js.dest);
 
   var isProd = (env === 'production');
-  var filenamePattern = isProd ? '[name]-[hash].js' : '[name].js';
+  var filenamePattern = isProd ? 'js/[name]-[hash].js' : 'js/[name].js';
 
   var webpackConfig = {
     context: context,
