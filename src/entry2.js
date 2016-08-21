@@ -1,3 +1,3 @@
-import writeOnDOM from './modules/util/common';
+import writeOnDOM from './modules/util/common'
 
-writeOnDOM('Hi from entry2');
+writeOnDOM('Hi from entry2')

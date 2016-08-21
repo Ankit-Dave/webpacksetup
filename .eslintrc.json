@@ -5,7 +5,7 @@
 */
 
 {
-  "extends": "eslint:recommended",
+  "extends": "standard",
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,

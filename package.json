@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "SET NODE_ENV=development&& webpack-dev-server --content-base build/ --inline --hot",
-    "build-dev": "SET NODE_ENV=development&& webpack -d --color",
-    "build-prod": "SET NODE_ENV=production&& webpack -p --color",
+    "server": "SET NODE_ENV=development&& webpack-dev-server --config ./buildSystem/webpack.config.js --content-base build/ --inline --hot --color --progress",
+    "build-dev": "SET NODE_ENV=development&& webpack --config ./buildSystem/webpack.config.js -d --color",
+    "build-prod": "SET NODE_ENV=production&& webpack --config ./buildSystem/webpack.config.js -p --color",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ankit Dave (ankitdave87@gmail.com)",
@@ -18,9 +18,13 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-2": "^6.13.0",
     "clean-webpack-plugin": "^0.1.10",
-    "eslint": "^3.0.0",
+    "eslint": "^3.3.1",
+    "eslint-config-standard": "^6.0.0-beta.3",
     "eslint-loader": "^1.4.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
     "html-webpack-plugin": "^2.22.0",
+    "standard": "^8.0.0-beta.5",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },

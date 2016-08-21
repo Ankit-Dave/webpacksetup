@@ -1,3 +1,3 @@
-export default function writeOnDOM(message) {
-  document.write(message);
+export default function writeOnDOM (message) {
+  document.write(message)
 }
